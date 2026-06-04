@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
+/* Design tokens */
 :root {
   /* Accent */
   --accent:          #2563EB;
@@ -18,8 +17,22 @@
   --surface:         #F9FAFB;
   --border:          #E5E7EB;
   --border-hover:    #93C5FD;
+
+  /* Institution badge colors */
+  --inst-academia-bg:     #EFF6FF;
+  --inst-academia-text:   #1D4ED8;
+  --inst-academia-border: #BFDBFE;
+
+  --inst-company-bg:      #F0FDF4;
+  --inst-company-text:    #166534;
+  --inst-company-border:  #BBF7D0;
+
+  --inst-other-bg:        #FFF7ED;
+  --inst-other-text:      #9A3412;
+  --inst-other-border:    #FED7AA;
 }
 
+/* Base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -34,4 +47,124 @@ html, body {
   color: var(--text-primary);
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Shared: chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 0.5px solid var(--border);
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.chip:hover {
+  background: var(--surface);
+}
+
+.chip-accent {
+  border-color: var(--accent-border);
+  color: var(--accent-text);
+  background: var(--accent-bg);
+}
+
+.chip-accent:hover {
+  background: #DBEAFE;
+}
+
+/* Shared: section label */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  margin-bottom: 1.25rem;
+}
+
+/* Shared: section divider */
+.section-divider {
+  border: none;
+  border-top: 0.5px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* Layout */
+.main-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Hero */
+.hero-section {
+  padding: 2.5rem 0 2rem;
+}
+
+.hero-top {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.avatar-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border: 0.5px solid var(--border);
+}
+
+.hero-name {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 5px;
+}
+
+.hero-role {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin: 0 0 13px;
+}
+
+.hero-bio {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.hero-bottom {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--border);
+}
+
+.hero-invite {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
