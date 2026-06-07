@@ -1,0 +1,13 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import { experiences } from "../data/experience";
+import "../styles/Experience.css";
+---
+
+<section id="experience" class="experience-section section-wrapper">
+  <span class="section-label">Experience</span>
+
+  <div class="exp-list">
+    {experiences.map(entry => <ExperienceItem entry={entry} />)}
+  </div>
+</section>

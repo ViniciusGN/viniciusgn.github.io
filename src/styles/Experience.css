@@ -1,0 +1,16 @@
+.experience-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.experience-section .section-label {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
