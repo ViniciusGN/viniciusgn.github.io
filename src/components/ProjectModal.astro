@@ -1,0 +1,37 @@
+---
+import '../styles/ProjectModal.css'
+---
+
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div id="modal-card">
+    <button id="modal-close-x" aria-label="Close">×</button>
+
+    <div id="modal-category-row">
+      <span id="modal-dot"></span>
+      <span id="modal-category-label"></span>
+    </div>
+
+    <h2 id="modal-title"></h2>
+    <p id="modal-description"></p>
+
+    <div id="modal-demo-banner">
+      <p>This project has a dedicated interactive web demo with live simulations.</p>
+      <a id="modal-demo-link" href="#" target="_blank" rel="noopener" class="modal-btn modal-btn-demo">
+        See demo →
+      </a>
+    </div>
+
+    <div id="modal-tags"></div>
+
+    <div id="modal-actions">
+      <button id="modal-btn-close" class="modal-btn modal-btn-close">Close</button>
+      <a id="modal-btn-github" href="#" target="_blank" rel="noopener" class="modal-btn modal-btn-primary">
+        Go to project
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../scripts/ProjectModal.js'
+</script>

@@ -1,0 +1,81 @@
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(17, 24, 39, 0.45);
+}
+
+#modal-overlay.active {
+  display: flex;
+}
+
+#modal-card {
+  position: relative;
+  width: min(100%, 560px);
+  padding: 28px;
+  border-radius: 20px;
+  background: #fff;
+  border: 0.5px solid var(--border);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+}
+
+#modal-close-x {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+#modal-demo-banner {
+  display: none;
+}
+
+#modal-demo-banner.visible {
+  display: block;
+}
+
+#modal-category-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#modal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+#modal-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+#modal-description {
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+
+#modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+#modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
