@@ -168,3 +168,7 @@ html, body {
   flex-wrap: wrap;
   gap: 8px;
 }
+
+html {
+  scroll-behavior: smooth;
+}

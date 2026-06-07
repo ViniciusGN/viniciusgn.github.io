@@ -1,67 +1,18 @@
 ---
-const links = [
-  { label: 'About',      href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects',   href: '#projects' },
-  { label: 'Contact',    href: '#contact' },
-]
+import "../styles/Navbar.css";
 ---
 
-<nav>
+<header id="navbar">
   <div class="nav-inner">
-    <span class="nav-brand">Vinicius Nascimento</span>
-    <ul class="nav-links">
-      {links.map(link => (
-        <li><a href={link.href}>{link.label}</a></li>
-      ))}
-    </ul>
+    <a href="/" class="nav-brand">Vinicius Nascimento</a>
+
+    <nav aria-label="Main navigation">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<style>
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: #ffffff;
-    border-bottom: 0.5px solid var(--border);
-  }
-
-  :global(.dark) nav {
-    background: #0f172a;
-    border-bottom-color: #1e293b;
-  }
-
-  .nav-inner {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-brand {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-
-  .nav-links a:hover {
-    color: var(--text-primary);
-  }
-</style>
+<script src="../scripts/Navbar.js"></script>
