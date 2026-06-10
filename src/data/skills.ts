@@ -5,27 +5,27 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
-    label: "Machine Learning",
-    skills: ["PyTorch", "scikit-learn", "TensorFlow", "CNNs", "Autoencoders", "Siamese Networks"],
+    label: "Programming",
+    skills: ["Python", "SQL", "Bash", "C/C++", "TypeScript", "Java"],
   },
   {
-    label: "Wireless & RF",
-    skills: ["CSI Fingerprinting", "RF Fingerprinting", "802.11", "GNSS", "Signal Processing", "SDR"],
+    label: "AI & Machine Learning",
+    skills: ["PyTorch", "TensorFlow", "scikit-learn", "Hugging Face", "LangChain", "RAG", "Reinforcement Learning"],
   },
   {
     label: "Cybersecurity",
-    skills: ["Physical-Layer Auth", "Spoofing Detection", "IDS/IPS", "Network Forensics", "Adversarial ML"],
+    skills: ["Threat Intelligence", "SIEM", "MITRE ATT&CK", "Splunk", "Wireshark", "Burp Suite", "Metasploit", "Nmap"],
   },
   {
-    label: "Programming",
-    skills: ["Python", "C/C++", "TypeScript", "React", "Rust (learning)"],
+    label: "Wireless & RF",
+    skills: ["CSI Fingerprinting", "RF Fingerprinting", "802.11", "GNSS", "Signal Processing", "SDR", "GNU Radio"],
   },
   {
-    label: "Tools & Infra",
-    skills: ["Linux", "Git", "Docker", "Wireshark", "Scapy", "GNU Radio"],
+    label: "Data & MLOps",
+    skills: ["Pandas", "MLflow", "Weights & Biases", "Spark", "Databricks", "Snowflake"],
   },
   {
-    label: "Research",
-    skills: ["LaTeX", "Academic Writing", "Experimental Design", "Data Analysis", "Matplotlib"],
+    label: "Cloud & Infrastructure",
+    skills: ["AWS", "Docker", "Kubernetes", "Grafana", "Zabbix", "Git", "CI/CD"],
   },
 ];

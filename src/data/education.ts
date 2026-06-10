@@ -5,7 +5,8 @@ export interface Education {
   period: string;
   type: "academia" | "company" | "other";
   initials: string;
-  description: string;
+  logo?: string;
+  description: string | string[];
   tags: string[];
 }
 
@@ -17,30 +18,23 @@ export const education: Education[] = [
     period: "Sep 2024 – Sep 2026",
     type: "academia",
     initials: "EN",
-    description:
-      "Double-degree programme specialising in Cybersecurity and Artificial Intelligence. International merit scholarship recipient through the BRAFITEC programme.",
-    tags: [
-      "Cybersecurity",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Research"
-    ]
+    description: [
+      "Specialisation in Cybersecurity and Artificial Intelligence. Double-degree programme with UnB (Brazil).",
+      "International academic merit scholarship — BRAFITEC programme (Brazil-France university exchange).",
+    ],
+    tags: ["Cybersecurity", "AI", "Double Degree", "BRAFITEC"],
   },
-
   {
     role: "B.Eng. Communications Network Engineering",
-    organization: "University of Brasília (UnB)",
+    organization: "Universidade de Brasília (UnB)",
     url: "https://www.unb.br",
     period: "Aug 2017 – Dec 2026",
     type: "academia",
-    initials: "UNB",
-    description:
-      "Communications Network Engineering degree focused on telecommunications, networking and cybersecurity. Teaching assistant in Algorithms and Transport Protocols & Routing.",
-    tags: [
-      "Telecommunications",
-      "Networking",
-      "Cybersecurity",
-      "Teaching Assistant"
-    ]
-  }
+    initials: "UnB",
+    description: [
+      "Pursued in parallel with military service as a Temporary Signals Officer and international exchange in France.",
+      "Teaching assistant for Transport Protocols and Routing, and Algorithms and Data Structures.",
+    ],
+    tags: ["Telecommunications", "Networking", "Cybersecurity", "Teaching Assistant"],
+  },
 ];
