@@ -1,0 +1,186 @@
+---
+// Certifications.astro
+
+interface Cert {
+  name: string;
+  issuer: string;
+  logo: string;
+  url?: string;
+  pending?: boolean;
+}
+
+const certs: Cert[] = [
+  {
+    name: "CompTIA Security+",
+    issuer: "CompTIA",
+    logo: "/images/projects/sec+.png",
+    url: "https://www.comptia.org/certifications/security",
+  },
+  {
+    name: "CompTIA AI Security+",
+    issuer: "CompTIA",
+    logo: "/images/projects/secai+.jpg",
+    url: "https://www.comptia.org/certifications/artificial-intelligence",
+  },
+  {
+    name: "AI Engineer",
+    issuer: "DataCamp",
+    logo: "/images/projects/AI_Engineer_DS_DC.jpg",
+    url: "https://www.datacamp.com",
+  },
+  {
+    name: "Google Cybersecurity",
+    issuer: "Google / Coursera",
+    logo: "/images/projects/google_cybersec.png",
+    url: "https://www.coursera.org/professional-certificates/google-cybersecurity",
+  },
+  {
+    name: "Google Project Management",
+    issuer: "Google / Coursera",
+    logo: "/images/projects/google_pi_logo.png",
+    url: "https://www.coursera.org/professional-certificates/google-project-management",
+  },
+  {
+    name: "Zabbix Certified Professional",
+    issuer: "Zabbix",
+    logo: "/images/projects/zabbix_prof_cert.png",
+    url: "https://www.zabbix.com/training",
+  },
+  {
+    name: "IEEE CIS Membership",
+    issuer: "IEEE",
+    logo: "/images/projects/ieeecis.jpg",
+  },
+  {
+    name: "AWS Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    logo: "/images/projects/aws_cp_found.png",
+    pending: true,
+  },
+  {
+    name: "Penetration Tester",
+    issuer: "DESEC Security",
+    logo: "/images/projects/desec_security_logo.jpg",
+    pending: true,
+  },
+  {
+    name: "LPIC-1",
+    issuer: "Linux Professional Institute",
+    logo: "/images/projects/lpic1.png",
+    pending: true,
+  },
+];
+
+---
+
+<section id="certifications">
+  <span class="section-label">Certifications & Memberships</span>
+  <div class="cert-grid">
+    {certs.map(cert => (
+      <a
+        href={cert.pending ? undefined : (cert.url ?? "#")}
+        target={cert.pending ? undefined : "_blank"}
+        rel="noopener noreferrer"
+        class={`cert-card${cert.pending ? " cert-pending" : ""}`}
+        aria-label={cert.name}
+      >
+        <div class="cert-logo-wrap">
+          <img src={cert.logo} alt={cert.name} class="cert-logo" />
+          {cert.pending && <span class="cert-badge">In progress</span>}
+        </div>
+        <div class="cert-info">
+          <span class="cert-name">{cert.name}</span>
+          <span class="cert-issuer">{cert.issuer}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .cert-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 16px;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    text-decoration: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+  }
+
+  .cert-card:hover:not(.cert-pending) {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 0 4px var(--accent-bg);
+  }
+
+  .cert-pending {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  .cert-logo-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .cert-logo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--accent-border);
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent-border);
+    display: block;
+  }
+
+  .cert-badge {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--surface);
+    color: var(--text-tertiary);
+    border: 0.5px solid var(--border);
+    border-radius: 99px;
+    padding: 1px 6px;
+    white-space: nowrap;
+  }
+
+  .cert-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 540px) {
+    .cert-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

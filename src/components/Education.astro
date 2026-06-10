@@ -1,0 +1,11 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import { education } from "../data/education";
+---
+
+<section id="education">
+  <span class="section-label">Education</span>
+  <div class="exp-list">
+    {education.map(entry => <ExperienceItem entry={entry} />)}
+  </div>
+</section>
