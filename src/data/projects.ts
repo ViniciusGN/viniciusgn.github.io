@@ -19,7 +19,7 @@ export const projects: Project[] = [
   {
     title: "PLA Explorer",
     slug: "pla-explorer",
-    year: "2024",
+    year: "2026",
     color: "#2563EB",
     description:
       "Interactive research tool for exploring Physical-Layer Authentication using CSI fingerprinting and Siamese CNNs. Visualizes model performance, confusion matrices, and signal patterns.",
@@ -34,7 +34,7 @@ export const projects: Project[] = [
   {
     title: "Generative AI & Computer Vision — Bayeux Museum",
     slug: "greyc-bayeux",
-    year: "2025",
+    year: "2026",
     color: "#7C3AED",
     description:
       "Industrial project with GREYC laboratory and the Bayeux Museum. Interactive solutions using generative AI and computer vision to promote the cultural heritage of the Bayeux Tapestry.",
@@ -61,21 +61,21 @@ export const projects: Project[] = [
     demoUrl: "",
     githubUrl: "",
   },
-  {
-    title: "RF Fingerprinting for GNSS Spoofing Detection",
-    slug: "gnss-spoofing",
-    year: "2023",
-    color: "#059669",
-    description:
-      "Machine learning pipeline for detecting GNSS spoofing attacks using radio-frequency fingerprinting on raw signal data.",
-    fullDescription:
-      "A machine learning pipeline that extracts RF fingerprints from raw GNSS signal captures and trains a classifier to distinguish authentic signals from spoofed ones. Evaluated on multiple spoofing scenarios including meaconing and signal injection.",
-    images: [],
-    tags: ["RF Fingerprinting", "GNSS", "Spoofing Detection", "Python", "scikit-learn", "Cybersecurity", "AI Security"],
-    hasDemo: false,
-    demoUrl: "",
-    githubUrl: "https://github.com/ViniciusGN/gnss-spoofing",
-  },
+  // {
+  //   title: "RF Fingerprinting for GNSS Spoofing Detection",
+  //   slug: "gnss-spoofing",
+  //   year: "2026",
+  //   color: "#059669",
+  //   description:
+  //     "Machine learning pipeline for detecting GNSS spoofing attacks using radio-frequency fingerprinting on raw signal data.",
+  //   fullDescription:
+  //     "A machine learning pipeline that extracts RF fingerprints from raw GNSS signal captures and trains a classifier to distinguish authentic signals from spoofed ones. Evaluated on multiple spoofing scenarios including meaconing and signal injection.",
+  //   images: [],
+  //   tags: ["RF Fingerprinting", "GNSS", "Spoofing Detection", "Python", "scikit-learn", "Cybersecurity", "AI Security"],
+  //   hasDemo: false,
+  //   demoUrl: "",
+  //   githubUrl: "https://github.com/ViniciusGN/gnss-spoofing",
+  // },
   {
     title: "IoT & Embedded Security — Smart Water Meter",
     slug: "dyonaos-iot",
