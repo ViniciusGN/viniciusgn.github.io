@@ -29,8 +29,8 @@
 }
 
 .exp-logo:hover {
-  box-shadow: 0 0 0 4px #EFF6FF;
-  border-color: #BFDBFE !important;
+  box-shadow: 0 0 0 4px var(--accent-bg);
+  border-color: var(--accent-border) !important;
 }
 
 .exp-logo img {

@@ -2,16 +2,12 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #fff;
+  background: var(--bg);
   border-bottom: 0.5px solid var(--border);
 }
 
-.dark #navbar {
-  background: #111827;
-}
-
 .nav-inner {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   padding: 0 24px;
   height: 48px;
@@ -29,15 +25,59 @@
 nav {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .nav-link {
   font-size: 13px;
   color: var(--text-secondary);
+  text-decoration: none;
   transition: color 0.12s;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--text-primary);
+}
+
+/* Dark mode toggle button */
+.nav-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 0.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.nav-theme-toggle:hover {
+  background: var(--surface);
+  border-color: var(--border-hover);
+}
+
+.nav-theme-toggle svg {
+  width: 13px;
+  height: 13px;
+}
+
+@media (max-width: 640px) {
+  .nav-link {
+    display: none;
+  }
+
+  .nav-inner {
+    padding: 0 16px;
+  }
 }
