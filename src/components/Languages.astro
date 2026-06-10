@@ -1,0 +1,26 @@
+---
+// Languages.astro
+
+const languages = [
+  { name: "Portuguese", level: 5, label: "Native" },
+  { name: "English",    level: 4, label: "Professional" },
+  { name: "French",     level: 2, label: "Basic" },
+];
+---
+
+<section id="languages">
+  <span class="section-label">Languages</span>
+  <div class="lang-list">
+    {languages.map(({ name, level, label }) => (
+      <div class="lang-row">
+        <div class="lang-name">{name}</div>
+        <div class="lang-bar">
+          {[1, 2, 3, 4, 5].map(i => (
+            <span class={`lang-seg${i <= level ? " on" : ""}`} />
+          ))}
+        </div>
+        <div class="lang-level">{label}</div>
+      </div>
+    ))}
+  </div>
+</section>

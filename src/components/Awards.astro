@@ -1,0 +1,31 @@
+---
+// Awards.astro
+
+const awards = [
+  {
+    year: "2025",
+    title: "Best Paper Award — SBrT",
+    subtitle: "Brazilian Telecommunications Symposium",
+  },
+  {
+    year: "2024",
+    title: "CAPES Excellence Scholarship",
+    subtitle: "Awarded for outstanding M.Sc. performance",
+  },
+];
+---
+
+<section id="awards">
+  <span class="section-label">Awards</span>
+  <div class="award-list">
+    {awards.map(({ year, title, subtitle }) => (
+      <div class="award-item">
+        <div class="award-year">{year}</div>
+        <div class="award-body">
+          <div class="award-title">{title}</div>
+          <div class="award-sub">{subtitle}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

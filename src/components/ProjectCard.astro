@@ -1,5 +1,5 @@
 ---
-// ProjectCard.astro — clickable card with bounding-box hover + modal trigger
+// ProjectCard.astro — clickable card with modal trigger
 import type { Project } from "../data/projects";
 
 interface Props {
@@ -9,14 +9,14 @@ interface Props {
 const { project } = Astro.props;
 
 const CATEGORY_TAGS = ["AI", "Cybersecurity", "AI Security", "Others"];
-
 const categoryTags  = project.tags.filter(t => CATEGORY_TAGS.includes(t));
 const technicalTags = project.tags.filter(t => !CATEGORY_TAGS.includes(t));
 ---
 
 <div
-  class="bb-card project-card"
+  class="proj-card"
   role="button"
+  tabindex="0"
   aria-label={`Open details for ${project.title}`}
   data-modal-title={project.title}
   data-modal-description={project.fullDescription}
@@ -26,23 +26,22 @@ const technicalTags = project.tags.filter(t => !CATEGORY_TAGS.includes(t));
   data-modal-has-demo={String(project.hasDemo)}
   data-modal-demo-url={project.demoUrl}
 >
-  <div class="card-header">
-    <div class="card-title-row">
-      <!-- Colored dot -->
-      <span class="project-dot" style={`background:${project.color}`}></span>
-      <span class="project-title">{project.title}</span>
+  <div class="proj-row">
+    <div class="proj-title-row">
+      <span class="proj-dot" style={`background:${project.color}`}></span>
+      <span class="proj-title">{project.title}</span>
     </div>
-    <span class="project-year">{project.year}</span>
+    <span class="proj-meta">{project.year}</span>
   </div>
 
-  <p class="project-desc">{project.description}</p>
+  <p class="proj-desc">{project.description}</p>
 
-  <div class="card-tags">
-    {technicalTags.map(tag => <span class="chip">{tag}</span>)}
-    {categoryTags.map(tag  => <span class="chip chip-accent">{tag}</span>)}
+  <div class="proj-tags">
+    {technicalTags.map(tag => <span class="tag">{tag}</span>)}
+    {categoryTags.map(tag  => <span class="tag tag-accent">{tag}</span>)}
     {project.hasDemo && (
-      <span class="chip chip-demo">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <span class="tag tag-demo">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
           <polyline points="15 3 21 3 21 9"/>
           <line x1="10" y1="14" x2="21" y2="3"/>
@@ -54,40 +53,46 @@ const technicalTags = project.tags.filter(t => !CATEGORY_TAGS.includes(t));
 </div>
 
 <style>
-  .project-card {
-    padding: 16px 18px;
-    margin-bottom: 8px;
-    background: #fff;
-    transition: border-color 0.15s;
+  .proj-card {
+    padding: 18px;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background: var(--bg);
+    width: 100%;
+    text-align: left;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
-  .dark .project-card {
-    background: var(--surface);
+  .proj-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 0 4px var(--accent-bg);
   }
 
-  .card-header {
+  .proj-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
-  .card-title-row {
+  .proj-title-row {
     display: flex;
     align-items: center;
     gap: 10px;
     min-width: 0;
   }
 
-  .project-dot {
+  .proj-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
     flex-shrink: 0;
   }
 
-  .project-title {
+  .proj-title {
     font-size: 14px;
     font-weight: 500;
     color: var(--text-primary);
@@ -96,22 +101,31 @@ const technicalTags = project.tags.filter(t => !CATEGORY_TAGS.includes(t));
     text-overflow: ellipsis;
   }
 
-  .project-year {
+  .proj-meta {
     font-size: 12px;
     color: var(--text-tertiary);
     flex-shrink: 0;
   }
 
-  .project-desc {
-    font-size: 12px;
+  .proj-desc {
+    font-size: 13px;
     color: var(--text-secondary);
-    line-height: 1.65;
-    margin-bottom: 12px;
+    line-height: 1.7;
+    margin-bottom: 10px;
   }
 
-  .card-tags {
+  .proj-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+  }
+
+  .tag-demo {
+    border-color: var(--accent-border);
+    color: var(--accent-text);
+    background: var(--accent-bg);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
 </style>

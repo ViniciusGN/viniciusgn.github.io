@@ -8,13 +8,11 @@ interface Props {
 
 const { entry } = Astro.props;
 
-const typeColors = {
-  academia: { bg: "#EFF6FF", text: "#1D4ED8", border: "#BFDBFE" },
-  company:  { bg: "#F0FDF4", text: "#166534", border: "#BBF7D0" },
-  other:    { bg: "#FFF7ED", text: "#9A3412", border: "#FED7AA" },
+const typeClass = {
+  academia: "logo-academia",
+  company:  "logo-company",
+  other:    "logo-other",
 };
-
-const colors = typeColors[entry.type];
 
 const descriptions = Array.isArray(entry.description)
   ? entry.description
@@ -26,16 +24,12 @@ const descriptions = Array.isArray(entry.description)
     href={entry.url}
     target="_blank"
     rel="noopener"
-    class="exp-logo"
+    class={`exp-logo ${typeClass[entry.type]}`}
     aria-label={`Visit ${entry.organization}`}
-    style={`background:${colors.bg}; color:${colors.text}; border-color:${colors.border};`}
   >
-    {
-      entry.logo ? (
-        <img src={entry.logo} alt={`${entry.organization} logo`} />
-      ) : (
-        entry.initials
-      )
+    {entry.logo
+      ? <img src={entry.logo} alt={`${entry.organization} logo`} />
+      : entry.initials
     }
   </a>
 
@@ -50,13 +44,30 @@ const descriptions = Array.isArray(entry.description)
     </a>
 
     <ul class="exp-desc">
-      {descriptions.map(item => (
-        <li>{item}</li>
-      ))}
+      {descriptions.map(item => <li>{item}</li>)}
     </ul>
 
     <div class="exp-tags">
-      {entry.tags.map(tag => <span class="chip">{tag}</span>)}
+      {entry.tags.map(tag => <span class="tag">{tag}</span>)}
     </div>
   </div>
 </div>
+
+<style>
+  /* Institution logo colors via CSS classes — dark mode safe */
+  .logo-academia {
+    background: var(--inst-academia-bg);
+    color: var(--inst-academia-text);
+    border-color: var(--inst-academia-border) !important;
+  }
+  .logo-company {
+    background: var(--inst-company-bg);
+    color: var(--inst-company-text);
+    border-color: var(--inst-company-border) !important;
+  }
+  .logo-other {
+    background: var(--inst-other-bg);
+    color: var(--inst-other-text);
+    border-color: var(--inst-other-border) !important;
+  }
+</style>
