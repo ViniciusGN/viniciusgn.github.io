@@ -1,12 +1,11 @@
 .experience-section {
   max-width: 720px;
   margin: 0 auto;
-  padding: 40px 24px;
 }
 
 .experience-section .section-label {
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .exp-list {

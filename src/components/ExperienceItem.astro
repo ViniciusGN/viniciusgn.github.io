@@ -21,10 +21,10 @@ const descriptions = Array.isArray(entry.description)
 
 <div class="exp-item">
   <a
-    href={entry.url}
+  href={entry.url}
     target="_blank"
     rel="noopener"
-    class={`exp-logo ${typeClass[entry.type]}`}
+    class={`exp-logo ${entry.logo ? 'logo-has-image' : typeClass[entry.type]}`}
     aria-label={`Visit ${entry.organization}`}
   >
     {entry.logo
@@ -69,5 +69,9 @@ const descriptions = Array.isArray(entry.description)
     background: var(--inst-other-bg);
     color: var(--inst-other-text);
     border-color: var(--inst-other-border) !important;
+  }
+  .logo-has-image {
+  background: var(--bg);
+  border-color: var(--accent-border) !important;
   }
 </style>
