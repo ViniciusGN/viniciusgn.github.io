@@ -13,45 +13,6 @@ interface Course {
 
 const courses: Course[] = [
   {
-    title: "Associate AI Engineer for Data Scientists",
-    provider: "DataCamp",
-    hours: "40h",
-    logo: "/images/projects/AI_Engineer_DS_DC.jpg",
-    highlights: [
-      "Transitioning machine learning models into production environments.",
-      "Building production-ready AI applications with LLM integration.",
-      "Model evaluation, monitoring, and MLOps best practices.",
-    ],
-    tools: ["Python", "OpenAI APIs", "Hugging Face", "MLflow", "Vector Databases"],
-    link: "https://www.datacamp.com",
-  },
-  {
-    title: "Associate AI Engineer for Developers",
-    provider: "DataCamp",
-    hours: "26h",
-    logo: "/images/projects/AI_Engineer_DS_DC.jpg",
-    highlights: [
-      "Building AI-powered software applications with LLM integration.",
-      "Semantic search, chatbots, and recommendation systems.",
-      "Prompt engineering and AI application design using modern frameworks.",
-    ],
-    tools: ["Python", "OpenAI", "LangChain", "Hugging Face", "Pinecone"],
-    link: "https://www.datacamp.com",
-  },
-  {
-    title: "Self-Driving Cars Specialization",
-    provider: "Coursera / University of Toronto",
-    hours: "~130h",
-    logo: "/images/projects/drivingcars.png",
-    highlights: [
-      "Perception, localization, state estimation and sensor fusion.",
-      "Motion planning, vehicle control and autonomous navigation.",
-      "Practical projects using autonomous driving datasets.",
-    ],
-    tools: ["Python", "NumPy", "OpenCV", "Kalman Filters", "Vehicle Simulation"],
-    link: "https://www.coursera.org/specializations/self-driving-cars",
-  },
-  {
     title: "SOC Level 1",
     provider: "TryHackMe",
     hours: "~65h",
@@ -102,6 +63,32 @@ const courses: Course[] = [
     ],
     tools: ["Linux", "Python", "SQL", "SIEM", "Wireshark", "IDS/IPS"],
     link: "https://www.coursera.org/professional-certificates/google-cybersecurity",
+  },
+  {
+    title: "Associate AI Engineer for Data Scientists",
+    provider: "DataCamp",
+    hours: "40h",
+    logo: "/images/projects/datacamp-logo.png",
+    highlights: [
+      "Transitioning machine learning models into production environments.",
+      "Building production-ready AI applications with LLM integration.",
+      "Model evaluation, monitoring, and MLOps best practices.",
+    ],
+    tools: ["Python", "OpenAI APIs", "Hugging Face", "MLflow", "Vector Databases"],
+    link: "https://www.datacamp.com",
+  },
+  {
+    title: "Associate AI Engineer for Developers",
+    provider: "DataCamp",
+    hours: "26h",
+    logo: "/images/projects/datacamp-logo.png",
+    highlights: [
+      "Building AI-powered software applications with LLM integration.",
+      "Semantic search, chatbots, and recommendation systems.",
+      "Prompt engineering and AI application design using modern frameworks.",
+    ],
+    tools: ["Python", "OpenAI", "LangChain", "Hugging Face", "Pinecone"],
+    link: "https://www.datacamp.com",
   },
   {
     title: "AI Hacking 101",
@@ -156,10 +143,23 @@ const courses: Course[] = [
     link: "https://www.cisa.gov/resources-tools/training/advanced-cybersecurity-industrial-control-systems-ics300",
   },
   {
+    title: "Self-Driving Cars Specialization",
+    provider: "Coursera / University of Toronto",
+    hours: "~130h",
+    logo: "/images/projects/drivingcars.png",
+    highlights: [
+      "Perception, localization, state estimation and sensor fusion.",
+      "Motion planning, vehicle control and autonomous navigation.",
+      "Practical projects using autonomous driving datasets.",
+    ],
+    tools: ["Python", "NumPy", "OpenCV", "Kalman Filters", "Vehicle Simulation"],
+    link: "https://www.coursera.org/specializations/self-driving-cars",
+  },
+  {
     title: "Discovering Open RAN: The Future of Mobile Networks",
     provider: "CPQD & Telecom Infra Project (TIP)",
     hours: "~25h",
-    logo: "/images/projects/logo-openran.webp",
+    logo: "/images/projects/logo-openran.png",
     highlights: [
       "Open RAN architecture, disaggregated and virtualized radio access networks.",
       "AI and automation applications in mobile networks and RAN Intelligent Controller (RIC).",
@@ -366,7 +366,7 @@ const courses: Course[] = [
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--surface);
+    background: #ffffff;
   }
 
   .course-logo {
@@ -466,6 +466,7 @@ const courses: Course[] = [
     border: 1.5px solid var(--accent-border);
     box-shadow: 0 0 0 3px var(--modal-bg), 0 0 0 5px var(--accent-border);
     flex-shrink: 0;
+    background: #ffffff;
   }
 
   .cm-logo-init {

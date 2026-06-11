@@ -235,6 +235,12 @@ section {
   margin: 0 0 16px;
 }
 
+.hero-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 .hero-chips {
   display: flex;
   flex-wrap: wrap;

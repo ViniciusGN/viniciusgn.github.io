@@ -29,38 +29,22 @@ const certs: Cert[] = [
     url: "https://www.datacamp.com",
   },
   {
-    name: "Google Cybersecurity",
-    issuer: "Google / Coursera",
-    logo: "/images/projects/google_cybersec.png",
-    url: "https://www.coursera.org/professional-certificates/google-cybersecurity",
-  },
-  {
-    name: "Google Project Management",
-    issuer: "Google / Coursera",
-    logo: "/images/projects/google_pi_logo.png",
-    url: "https://www.coursera.org/professional-certificates/google-project-management",
-  },
-  {
     name: "Zabbix Certified Professional",
     issuer: "Zabbix",
     logo: "/images/projects/zabbix_prof_cert.png",
     url: "https://www.zabbix.com/training",
   },
   {
-    name: "IEEE CIS Membership",
-    issuer: "IEEE",
-    logo: "/images/projects/ieeecis.jpg",
+    name: "Penetration Tester",
+    issuer: "DESEC Security",
+    logo: "/images/projects/desec_security_logo.jpg",
+    pending: true,
+    url: "https://desecsecurity.com/curso/novo-pentest-profissional"
   },
   {
     name: "AWS Cloud Practitioner",
     issuer: "Amazon Web Services",
     logo: "/images/projects/aws_cp_found.png",
-    pending: true,
-  },
-  {
-    name: "Penetration Tester",
-    issuer: "DESEC Security",
-    logo: "/images/projects/desec_security_logo.jpg",
     pending: true,
   },
   {
@@ -140,6 +124,7 @@ const certs: Cert[] = [
     border: 1.5px solid var(--accent-border);
     box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent-border);
     display: block;
+    background: #ffffff;
   }
 
   .cert-badge {

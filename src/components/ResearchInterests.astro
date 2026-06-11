@@ -1,29 +1,19 @@
 ---
 // ResearchInterests.astro
-
-const researchText = `
-My research interests lie at the intersection of Artificial Intelligence,
-Cybersecurity, and Communication Networks, with a focus on AI Security,
-Cyber Threat Intelligence, Mobile Network Security (5G/6G), IoT and Smart
-Infrastructure Security, and the protection of large-scale distributed and
-autonomous systems. I am particularly interested in applying machine learning
-and intelligent systems to enhance threat detection, cyber defense, and the
-security of next-generation networked environments.
-`;
 ---
 
 <div class="research-box">
   <span class="research-label">Research Interests</span>
-
-  <p class="research-paragraph">
-    {researchText}
+  <p class="research-text">
+    AI Security · Cyber Threat Intelligence · Mobile Network Security (5G/6G) · IoT/Edge and Smart
+    Infrastructure Security · Anomaly Detection · Protection of large-scale distributed and autonomous systems.
   </p>
 </div>
 
 <style>
   .research-box {
-    margin-top: 20px;
-    padding: 16px 20px;
+    margin-top: 14px;
+    padding: 13px 16px;
     border-radius: 12px;
     border: 0.5px solid var(--accent-border);
     background: var(--accent-bg);
@@ -31,19 +21,19 @@ security of next-generation networked environments.
 
   .research-label {
     display: block;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--accent-text);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
-  .research-paragraph {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.7;
+  .research-text {
+    font-size: 12px;
     color: var(--accent-text);
+    line-height: 1.65;
+    margin: 0;
     opacity: 0.9;
   }
 </style>
