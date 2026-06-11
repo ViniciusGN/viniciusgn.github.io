@@ -1,0 +1,564 @@
+---
+// Courses.astro
+
+interface Course {
+  title: string;
+  provider: string;
+  hours?: string;
+  logo?: string;
+  highlights: string[];
+  tools: string[];
+  link?: string;
+}
+
+const courses: Course[] = [
+  {
+    title: "Associate AI Engineer for Data Scientists",
+    provider: "DataCamp",
+    hours: "40h",
+    logo: "/images/projects/AI_Engineer_DS_DC.jpg",
+    highlights: [
+      "Transitioning machine learning models into production environments.",
+      "Building production-ready AI applications with LLM integration.",
+      "Model evaluation, monitoring, and MLOps best practices.",
+    ],
+    tools: ["Python", "OpenAI APIs", "Hugging Face", "MLflow", "Vector Databases"],
+    link: "https://www.datacamp.com",
+  },
+  {
+    title: "Associate AI Engineer for Developers",
+    provider: "DataCamp",
+    hours: "26h",
+    logo: "/images/projects/AI_Engineer_DS_DC.jpg",
+    highlights: [
+      "Building AI-powered software applications with LLM integration.",
+      "Semantic search, chatbots, and recommendation systems.",
+      "Prompt engineering and AI application design using modern frameworks.",
+    ],
+    tools: ["Python", "OpenAI", "LangChain", "Hugging Face", "Pinecone"],
+    link: "https://www.datacamp.com",
+  },
+  {
+    title: "Self-Driving Cars Specialization",
+    provider: "Coursera / University of Toronto",
+    hours: "~130h",
+    logo: "/images/projects/drivingcars.png",
+    highlights: [
+      "Perception, localization, state estimation and sensor fusion.",
+      "Motion planning, vehicle control and autonomous navigation.",
+      "Practical projects using autonomous driving datasets.",
+    ],
+    tools: ["Python", "NumPy", "OpenCV", "Kalman Filters", "Vehicle Simulation"],
+    link: "https://www.coursera.org/specializations/self-driving-cars",
+  },
+  {
+    title: "SOC Level 1",
+    provider: "TryHackMe",
+    hours: "~65h",
+    logo: "/images/projects/thm_socl_1.svg",
+    highlights: [
+      "Hands-on SOC analyst training through realistic security scenarios.",
+      "Threat hunting, incident investigation and log analysis workflows.",
+      "Network traffic analysis and Blue Team security event triage.",
+    ],
+    tools: ["Splunk", "Wireshark", "ELK Stack", "Snort", "Zeek", "Sysmon"],
+    link: "https://tryhackme.com/path/outline/soclevel1",
+  },
+  {
+    title: "Security Engineer Learning Path",
+    provider: "TryHackMe",
+    hours: "~55h",
+    logo: "/images/projects/thm_security-engineer.svg",
+    highlights: [
+      "Security engineering fundamentals and enterprise security design.",
+      "Infrastructure hardening and secure architecture principles.",
+      "Identity and access management, cloud and network security.",
+    ],
+    tools: ["Linux", "Windows Server", "Wireshark", "Nmap", "Active Directory"],
+    link: "https://tryhackme.com/path/outline/security-engineer-training",
+  },
+  {
+    title: "DevSecOps",
+    provider: "TryHackMe",
+    hours: "~45h",
+    logo: "/images/projects/thm_devsecops.svg",
+    highlights: [
+      "Integrating security into CI/CD pipelines and the SSDLC.",
+      "Automated security testing, vulnerability scanning and container security.",
+      "Security automation practices for modern development workflows.",
+    ],
+    tools: ["Docker", "GitHub Actions", "OWASP ZAP", "SAST", "DAST"],
+    link: "https://tryhackme.com/path/outline/devsecops",
+  },
+  {
+    title: "Google Cybersecurity Professional Certificate",
+    provider: "Google / Coursera",
+    hours: "~180h",
+    logo: "/images/projects/google_cybersec.png", 
+    highlights: [
+      "Foundational cybersecurity, threat detection and incident response.",
+      "Security monitoring, SIEM analysis and network security fundamentals.",
+      "Hands-on security investigations and automation with Python.",
+    ],
+    tools: ["Linux", "Python", "SQL", "SIEM", "Wireshark", "IDS/IPS"],
+    link: "https://www.coursera.org/professional-certificates/google-cybersecurity",
+  },
+  {
+    title: "AI Hacking 101",
+    provider: "TCM Security",
+    hours: "~10h",
+    logo: "/images/projects/tcm_ai_hacking.png",
+    highlights: [
+      "Attacks against AI systems and LLMs: prompt injection and jailbreak techniques.",
+      "Understanding AI attack surfaces and defensive approaches.",
+      "Security considerations for generative AI deployments.",
+    ],
+    tools: ["LLMs", "Prompt Engineering", "Python"],
+    link: "https://tcm-sec.com/academy/ai-hacking-101/",
+  },
+  {
+    title: "Practical Malware Analysis & Triage",
+    provider: "TCM Security",
+    hours: "~18h",
+    logo: "/images/projects/tcm_malware_logo.png",
+    highlights: [
+      "Static and dynamic malware analysis with behavioral triage workflows.",
+      "Indicators of compromise extraction and threat analysis reporting.",
+      "Windows malware investigation in sandboxed environments.",
+    ],
+    tools: ["PEStudio", "Procmon", "Process Explorer", "VirusTotal", "Wireshark"],
+    link: "https://tcm-sec.com/academy/practical-malware-analysis-triage/",
+  },
+  {
+    title: "Beginner's Guide to IoT and Hardware Hacking",
+    provider: "TCM Security",
+    hours: "~12h",
+    logo: "/images/projects/tcm_iot.png", 
+    highlights: [
+      "Practical introduction to embedded systems security and firmware analysis.",
+      "Hardware attack methodologies and IoT attack surface identification.",
+      "Microcontroller and communication protocol analysis (UART, SPI, I2C).",
+    ],
+    tools: ["Binwalk", "UART", "Logic Analyzer", "Microcontrollers", "Linux"],
+    link: "https://tcm-sec.com/academy/beginners-guide-to-iot-and-hardware-hacking/",
+  },
+  {
+    title: "Advanced Cybersecurity for ICS (ICS300)",
+    provider: "CISA",
+    hours: "~14h",
+    logo: "/images/projects/cisa_ics300.png",
+    highlights: [
+      "Protection of industrial control systems and SCADA against cyber threats.",
+      "Network discovery, ICS asset mapping and industrial threat detection.",
+      "Hands-on cybersecurity exercises in OT and critical infrastructure environments.",
+    ],
+    tools: ["SCADA", "ICS Networks", "Network Discovery", "Industrial Protocols"],
+    link: "https://www.cisa.gov/resources-tools/training/advanced-cybersecurity-industrial-control-systems-ics300",
+  },
+  {
+    title: "Discovering Open RAN: The Future of Mobile Networks",
+    provider: "CPQD & Telecom Infra Project (TIP)",
+    hours: "~25h",
+    logo: "/images/projects/logo-openran.webp",
+    highlights: [
+      "Open RAN architecture, disaggregated and virtualized radio access networks.",
+      "AI and automation applications in mobile networks and RAN Intelligent Controller (RIC).",
+      "Future directions for 5G and 6G network architectures and multi-vendor interoperability.",
+    ],
+    tools: ["O-RAN Alliance", "RIC", "xApps", "5G", "6G"],
+    link: "https://www.cpqd.com.br/noticias/jornada-open-ran-lanca-nova-trilha-de-capacitacao-profissional/",
+  },
+  {
+    title: "Google Project Management Professional Certificate",
+    provider: "Google / Coursera",
+    hours: "~140h",
+    logo: "/images/projects/google_pi_logo.png",
+    highlights: [
+      "Project planning, execution, monitoring and stakeholder communication.",
+      "Agile and Scrum methodologies with practical case studies.",
+      "Risk management, documentation and project simulations.",
+    ],
+    tools: ["Jira", "Asana", "Google Workspace"],
+    link: "https://www.coursera.org/professional-certificates/google-project-management",
+  },
+  {
+    title: "IEEE CIS AI Security Trainee Programme",
+    provider: "IEEE Computational Intelligence Society",
+    logo: "/images/projects/ieeecis.jpg",
+    highlights: [
+      "Trainee programme at the IEEE CIS student chapter (UnB, 2023), with active participation in the AI Security chair. Covered classical ML foundations — Linear and Logistic Regression, Clustering, Perceptron, MLP, NLP and CNNs — alongside data preparation techniques including cleaning, class imbalance handling and feature engineering.",
+    ],
+    tools: [],
+  },
+];
+---
+
+<section id="courses">
+  <span class="section-label">Courses & Training</span>
+  <div class="course-grid">
+    {courses.map((course, i) => (
+      <button
+        class="course-card"
+        data-course={i}
+        aria-label={`Open details for ${course.title}`}
+      >
+        <div class="course-logo-wrap">
+          {course.logo
+            ? <img src={course.logo} alt={course.provider} class="course-logo" />
+            : <span class="course-logo-initials">{course.provider.slice(0, 2).toUpperCase()}</span>
+          }
+        </div>
+        <div class="course-info">
+          <span class="course-title">{course.title}</span>
+          <span class="course-meta">{course.provider}{course.hours ? ` · ${course.hours}` : ""}</span>
+        </div>
+      </button>
+    ))}
+  </div>
+</section>
+
+<!-- Course Modal -->
+<div id="course-overlay" role="dialog" aria-modal="true" aria-labelledby="course-modal-title">
+  <div id="course-modal">
+    <button id="course-close" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <div class="course-modal-header">
+      <div id="cm-logo-wrap"></div>
+      <div>
+        <div id="cm-provider"></div>
+        <h2 id="course-modal-title"></h2>
+        <div id="cm-hours"></div>
+      </div>
+    </div>
+
+    <ul id="cm-highlights"></ul>
+
+    <div id="cm-tools-wrap">
+      <div id="cm-tools"></div>
+    </div>
+
+    <div class="course-modal-actions">
+      <button id="cm-close-btn" class="btn btn-ghost">Close</button>
+      <a id="cm-link" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="display:none">
+        View course ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  var courses = JSON.parse(document.getElementById('course-data').textContent);
+  var overlay = document.getElementById('course-overlay');
+  var cards   = document.querySelectorAll('.course-card');
+
+  function open(i) {
+    var c = courses[i];
+    document.getElementById('course-modal-title').textContent = c.title;
+    document.getElementById('cm-provider').textContent = c.provider;
+    document.getElementById('cm-hours').textContent = c.hours || '';
+
+    var logoWrap = document.getElementById('cm-logo-wrap');
+    if (c.logo) {
+      logoWrap.innerHTML = '<img src="' + c.logo + '" alt="' + c.provider + '" class="cm-logo-img" />';
+    } else {
+      logoWrap.innerHTML = '<span class="cm-logo-init">' + c.provider.slice(0,2).toUpperCase() + '</span>';
+    }
+
+    var hl = document.getElementById('cm-highlights');
+    hl.innerHTML = '';
+    c.highlights.forEach(function(h) {
+      var li = document.createElement('li');
+      li.textContent = h;
+      hl.appendChild(li);
+    });
+
+    var toolsWrap = document.getElementById('cm-tools-wrap');
+    var toolsEl   = document.getElementById('cm-tools');
+    toolsEl.innerHTML = '';
+    if (c.tools && c.tools.length) {
+      c.tools.forEach(function(t) {
+        var span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = t;
+        toolsEl.appendChild(span);
+      });
+      toolsWrap.style.display = 'block';
+    } else {
+      toolsWrap.style.display = 'none';
+    }
+
+    var link = document.getElementById('cm-link');
+    if (c.link) {
+      link.href = c.link;
+      link.style.display = 'inline-flex';
+    } else {
+      link.style.display = 'none';
+    }
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      open(parseInt(card.dataset.course));
+    });
+  });
+
+  document.getElementById('course-close').addEventListener('click', close);
+  document.getElementById('cm-close-btn').addEventListener('click', close);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) close();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+<script id="course-data" type="application/json" is:inline set:html={JSON.stringify(courses)} />
+
+<style>
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .course-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+  }
+
+  .course-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 0 4px var(--accent-bg);
+  }
+
+  .course-logo-wrap {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent-border);
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent-border);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+  }
+
+  .course-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .course-logo-initials {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-text);
+  }
+
+  .course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .course-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .course-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  /* Modal */
+  #course-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--overlay);
+    backdrop-filter: blur(2px);
+  }
+
+  #course-overlay.active {
+    display: flex;
+  }
+
+  #course-modal {
+    position: relative;
+    width: min(100%, 520px);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 20px;
+    background: var(--modal-bg);
+    border: 0.5px solid var(--border);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+  }
+
+  #course-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-secondary);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s;
+  }
+
+  #course-close:hover {
+    background: var(--surface);
+  }
+
+  .course-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-right: 32px;
+  }
+
+  .cm-logo-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--accent-border);
+    box-shadow: 0 0 0 3px var(--modal-bg), 0 0 0 5px var(--accent-border);
+    flex-shrink: 0;
+  }
+
+  .cm-logo-init {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent-border);
+    box-shadow: 0 0 0 3px var(--modal-bg), 0 0 0 5px var(--accent-border);
+    background: var(--accent-bg);
+    color: var(--accent-text);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  #cm-provider {
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  #course-modal-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+
+  #cm-hours {
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  #cm-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #cm-highlights li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  #cm-highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  #cm-tools-wrap {
+    margin-bottom: 18px;
+  }
+
+  #cm-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .course-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  @media (max-width: 540px) {
+    .course-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .course-modal-actions {
+      flex-direction: column-reverse;
+      align-items: stretch;
+    }
+
+    .course-modal-actions .btn {
+      justify-content: center;
+    }
+  }
+</style>
