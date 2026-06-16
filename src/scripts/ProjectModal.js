@@ -8,7 +8,7 @@ function openModal(trigger) {
   const descEl = document.getElementById('modal-description')
   const tagsEl = document.getElementById('modal-tags')
   const demoBanner = document.getElementById('modal-demo-banner')
-  const demoLink = document.getElementById('modal-demo-link')
+  const demoLink = document.getElementById('modal-btn-demo')
   const githubBtn = document.getElementById('modal-btn-github')
 
   if (!overlay || !dotEl || !catLabel || !titleEl || !descEl || !tagsEl || !demoBanner || !demoLink || !githubBtn) return
@@ -35,10 +35,12 @@ function openModal(trigger) {
     .join('')
 
   if (hasDemo && demoUrl) {
-    demoBanner.classList.add('visible')
+    demoBanner.style.display = ''
+    demoLink.style.display = ''
     demoLink.href = demoUrl
   } else {
-    demoBanner.classList.remove('visible')
+    demoBanner.style.display = 'none'
+    demoLink.style.display = 'none'
   }
 
   overlay.classList.add('active')
@@ -53,7 +55,7 @@ function closeModal() {
   document.body.style.overflow = ''
 }
 
-document.querySelectorAll('.bb-card').forEach(el => {
+document.querySelectorAll('.proj-card').forEach(el => {
   el.setAttribute('tabindex', '0')
 
   el.addEventListener('click', () => openModal(el))
