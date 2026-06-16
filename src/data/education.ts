@@ -18,7 +18,7 @@ export const education: Education[] = [
     period: "Sep 2024 – Sep 2026",
     type: "academia",
     initials: "EN",
-    logo: "/images/projects/Ensicaen_logo.png",
+    logo: "/images/profile/education/Ensicaen_logo.png",
     description: [
       "Specialisation in Cybersecurity and Artificial Intelligence. Double-degree programme with UnB (Brazil).",
       "International academic merit scholarship — BRAFITEC programme (Brazil-France university exchange).",
@@ -32,7 +32,7 @@ export const education: Education[] = [
     period: "Aug 2017 – Dec 2026",
     type: "academia",
     initials: "UnB",
-    logo: "/images/projects/unb_logo.png",
+    logo: "/images/profile/education/unb_logo.png",
     description: [
       "Pursued in parallel with military service as a Temporary Signals Officer and international exchange in France.",
       "Teaching assistant for Transport Protocols and Routing, and Algorithms and Data Structures.",
