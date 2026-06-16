@@ -1,8 +1,8 @@
 import type { ProjectDetail } from "./types.ts";
 
 const detail: ProjectDetail = {
-  slug: "network-security-soc-lab",
-
+  slug: "gns3-network",
+ 
   fullDescription: [
     "This project was developed as part of the Network Security course at the University of Brasília (UnB), where it received the highest grade in the class. Conducted in a two-person team, the objective was to design, deploy, secure, and monitor a realistic enterprise-scale network infrastructure inspired by the architecture of different university campuses and managed from a Security Operations Center (SOC) perspective.",
 

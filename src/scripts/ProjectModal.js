@@ -1,4 +1,9 @@
+import { openDetailModal } from './ProjectDetailModal.js'
+
 const CATEGORY_TAGS = ['AI', 'Cybersecurity', 'AI Security', 'Others']
+
+const DEMO_INTRO_TEXT =
+  'Due to the scope and depth of this project, it has a complete, interactive web-based version available through the buttons below.'
 
 function openModal(trigger) {
   const overlay = document.getElementById('modal-overlay')
@@ -23,8 +28,13 @@ function openModal(trigger) {
 
   dotEl.style.background = color
   titleEl.textContent = title
-  descEl.textContent = description
   githubBtn.href = github
+
+  // For demo projects, append the standard explanatory note after the
+  // project's own description so the demo button below makes sense.
+  descEl.textContent = hasDemo && demoUrl
+    ? `${description} ${DEMO_INTRO_TEXT}`
+    : description
 
   const allTags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()) : []
 
@@ -35,11 +45,11 @@ function openModal(trigger) {
     .join('')
 
   if (hasDemo && demoUrl) {
-    demoBanner.style.display = ''
+    demoBanner.classList.add('visible')
     demoLink.style.display = ''
     demoLink.href = demoUrl
   } else {
-    demoBanner.style.display = 'none'
+    demoBanner.classList.remove('visible')
     demoLink.style.display = 'none'
   }
 
@@ -58,12 +68,26 @@ function closeModal() {
 document.querySelectorAll('.proj-card').forEach(el => {
   el.setAttribute('tabindex', '0')
 
-  el.addEventListener('click', () => openModal(el))
+  const hasDemo = el.dataset.modalHasDemo === 'true'
+  const hasDetail = el.dataset.modalHasDetail === 'true'
+
+  // Routing: demo projects always use the small popup (with the standard
+  // demo note). Non-demo projects with a dedicated detail file open the
+  // large detail window. Everything else falls back to the small popup.
+  const handleOpen = () => {
+    if (!hasDemo && hasDetail) {
+      openDetailModal(el)
+    } else {
+      openModal(el)
+    }
+  }
+
+  el.addEventListener('click', handleOpen)
 
   el.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
-      openModal(el)
+      handleOpen()
     }
   })
 })

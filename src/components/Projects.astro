@@ -1,8 +1,14 @@
 ---
 // Projects.astro — homepage projects section
-// Shows all projects with search + filter. Links to /projects for full detail page.
 import ProjectCard from "./ProjectCard.astro";
 import { projects } from "../data/projects";
+
+const detailModules = import.meta.glob("../data/projects/*.ts");
+const detailSlugs = new Set(
+  Object.keys(detailModules)
+    .map(path => path.split("/").pop()?.replace(".ts", ""))
+    .filter((slug): slug is string => !!slug && slug !== "types" && slug !== "index")
+);
 ---
 
 <section id="projects" class="section-wrapper">
@@ -59,7 +65,7 @@ import { projects } from "../data/projects";
           ["AI","Cybersecurity","AI Security","Others"].includes(t)
         ).join(",")}
       >
-        <ProjectCard project={project} />
+        <ProjectCard project={project} hasDetail={detailSlugs.has(project.slug)} />
       </div>
     ))}
   </div>

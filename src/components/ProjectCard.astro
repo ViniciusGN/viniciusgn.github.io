@@ -4,9 +4,10 @@ import type { Project } from "../data/projects";
 
 interface Props {
   project: Project;
+  hasDetail?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, hasDetail = false } = Astro.props;
 
 const CATEGORY_TAGS = ["AI", "Cybersecurity", "AI Security", "Others"];
 const categoryTags  = project.tags.filter(t => CATEGORY_TAGS.includes(t));
@@ -25,6 +26,8 @@ const technicalTags = project.tags.filter(t => !CATEGORY_TAGS.includes(t));
   data-modal-github={project.githubUrl}
   data-modal-has-demo={String(project.hasDemo)}
   data-modal-demo-url={project.demoUrl}
+  data-modal-slug={project.slug}
+  data-modal-has-detail={String(hasDetail)}
 >
   <div class="proj-row">
     <div class="proj-title-row">
