@@ -9,13 +9,14 @@ interface Course {
   highlights: string[];
   tools: string[];
   link?: string;
+  certificateImage?: string;
 }
 
 const courses: Course[] = [
   {
     title: "SOC Level 1",
     provider: "TryHackMe",
-    hours: "~65h",
+    hours: "65h",
     logo: "/images/profile/courses/thm_socl_1.svg",
     highlights: [
       "Hands-on SOC analyst training through realistic security scenarios.",
@@ -28,7 +29,7 @@ const courses: Course[] = [
   {
     title: "Security Engineer Learning Path",
     provider: "TryHackMe",
-    hours: "~55h",
+    hours: "55h",
     logo: "/images/profile/courses/thm_security-engineer.svg",
     highlights: [
       "Security engineering fundamentals and enterprise security design.",
@@ -41,7 +42,7 @@ const courses: Course[] = [
   {
     title: "DevSecOps",
     provider: "TryHackMe",
-    hours: "~45h",
+    hours: "45h",
     logo: "/images/profile/courses/thm_devsecops.svg",
     highlights: [
       "Integrating security into CI/CD pipelines and the SSDLC.",
@@ -54,7 +55,7 @@ const courses: Course[] = [
   {
     title: "Google Cybersecurity Professional Certificate",
     provider: "Google / Coursera",
-    hours: "~180h",
+    hours: "180h",
     logo: "/images/profile/courses/google_cybersec.png", 
     highlights: [
       "Foundational cybersecurity, threat detection and incident response.",
@@ -93,7 +94,7 @@ const courses: Course[] = [
   {
     title: "AI Hacking 101",
     provider: "TCM Security",
-    hours: "~10h",
+    hours: "10h",
     logo: "/images/profile/courses/tcm_ai_hacking.png",
     highlights: [
       "Attacks against AI systems and LLMs: prompt injection and jailbreak techniques.",
@@ -106,7 +107,7 @@ const courses: Course[] = [
   {
     title: "Practical Malware Analysis & Triage",
     provider: "TCM Security",
-    hours: "~18h",
+    hours: "18h",
     logo: "/images/profile/courses/tcm_malware_logo.png",
     highlights: [
       "Static and dynamic malware analysis with behavioral triage workflows.",
@@ -119,7 +120,7 @@ const courses: Course[] = [
   {
     title: "Beginner's Guide to IoT and Hardware Hacking",
     provider: "TCM Security",
-    hours: "~12h",
+    hours: "12h",
     logo: "/images/profile/courses/tcm_iot.png", 
     highlights: [
       "Practical introduction to embedded systems security and firmware analysis.",
@@ -132,7 +133,7 @@ const courses: Course[] = [
   {
     title: "Advanced Cybersecurity for ICS (ICS300)",
     provider: "CISA",
-    hours: "~14h",
+    hours: "14h",
     logo: "/images/profile/courses/cisa_ics300.png",
     highlights: [
       "Protection of industrial control systems and SCADA against cyber threats.",
@@ -145,7 +146,7 @@ const courses: Course[] = [
   {
     title: "Self-Driving Cars Specialization",
     provider: "Coursera / University of Toronto",
-    hours: "~130h",
+    hours: "130h",
     logo: "/images/profile/courses/drivingcars.png",
     highlights: [
       "Perception, localization, state estimation and sensor fusion.",
@@ -158,7 +159,7 @@ const courses: Course[] = [
   {
     title: "Discovering Open RAN: The Future of Mobile Networks",
     provider: "CPQD & Telecom Infra Project (TIP)",
-    hours: "~25h",
+    hours: "18h",
     logo: "/images/profile/courses/logo-openran.png",
     highlights: [
       "Open RAN architecture, disaggregated and virtualized radio access networks.",
@@ -167,11 +168,12 @@ const courses: Course[] = [
     ],
     tools: ["O-RAN Alliance", "RIC", "xApps", "5G", "6G"],
     link: "https://www.cpqd.com.br/noticias/jornada-open-ran-lanca-nova-trilha-de-capacitacao-profissional/",
+    certificateImage: "/images/projects/certificates/certificate_openran.png",
   },
   {
     title: "Google Project Management Professional Certificate",
     provider: "Google / Coursera",
-    hours: "~140h",
+    hours: "140h",
     logo: "/images/profile/courses/google_pi_logo.png",
     highlights: [
       "Project planning, execution, monitoring and stakeholder communication.",
@@ -226,29 +228,46 @@ const courses: Course[] = [
       </svg>
     </button>
 
-    <div class="course-modal-header">
-      <div id="cm-logo-wrap"></div>
-      <div>
-        <div id="cm-provider"></div>
-        <h2 id="course-modal-title"></h2>
-        <div id="cm-hours"></div>
+    <button id="course-back" aria-label="Back to course details">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+    </button>
+
+    <div id="course-view-description">
+      <div class="course-modal-header">
+        <div id="cm-logo-wrap"></div>
+        <div>
+          <div id="cm-provider"></div>
+          <h2 id="course-modal-title"></h2>
+          <div id="cm-hours"></div>
+        </div>
+      </div>
+
+      <ul id="cm-highlights"></ul>
+
+      <div id="cm-tools-wrap">
+        <div id="cm-tools"></div>
+      </div>
+
+      <div class="course-modal-actions">
+        <button id="cm-close-btn" class="btn btn-ghost">Close</button>
+        <button id="cm-view-certificate" class="btn btn-secondary" style="display:none">
+          View Certificate
+        </button>
+        <a id="cm-link" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="display:none">
+          View course ↗
+        </a>
       </div>
     </div>
 
-    <ul id="cm-highlights"></ul>
-
-    <div id="cm-tools-wrap">
-      <div id="cm-tools"></div>
-    </div>
-
-    <div class="course-modal-actions">
-      <button id="cm-close-btn" class="btn btn-ghost">Close</button>
-      <a id="cm-link" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="display:none">
-        View course ↗
-      </a>
+    <div id="course-view-certificate">
+      <img id="cm-certificate-img" src="" alt="Certificate" />
     </div>
   </div>
 </div>
+
+<script id="course-data" type="application/json" is:inline set:html={JSON.stringify(courses)} />
 
 <script is:inline>
 (function () {
@@ -300,13 +319,36 @@ const courses: Course[] = [
       link.style.display = 'none';
     }
 
+    var certBtn = document.getElementById('cm-view-certificate');
+    var certImg = document.getElementById('cm-certificate-img');
+    if (c.certificateImage) {
+      certBtn.style.display = 'inline-flex';
+      certImg.src = c.certificateImage;
+      certImg.alt = c.title + ' certificate';
+    } else {
+      certBtn.style.display = 'none';
+      certImg.src = '';
+    }
+
+    showDescriptionView();
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+  }
+
+  function showCertificateView() {
+    var modal = document.getElementById('course-modal');
+    modal.classList.add('certificate-view');
+  }
+
+  function showDescriptionView() {
+    var modal = document.getElementById('course-modal');
+    modal.classList.remove('certificate-view');
   }
 
   function close() {
     overlay.classList.remove('active');
     document.body.style.overflow = '';
+    showDescriptionView();
   }
 
   cards.forEach(function(card) {
@@ -317,6 +359,8 @@ const courses: Course[] = [
 
   document.getElementById('course-close').addEventListener('click', close);
   document.getElementById('cm-close-btn').addEventListener('click', close);
+  document.getElementById('cm-view-certificate').addEventListener('click', showCertificateView);
+  document.getElementById('course-back').addEventListener('click', showDescriptionView);
   overlay.addEventListener('click', function(e) {
     if (e.target === overlay) close();
   });
@@ -326,12 +370,10 @@ const courses: Course[] = [
 })();
 </script>
 
-<script id="course-data" type="application/json" is:inline set:html={JSON.stringify(courses)} />
-
 <style>
   .course-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
 
@@ -427,6 +469,11 @@ const courses: Course[] = [
     background: var(--modal-bg);
     border: 0.5px solid var(--border);
     box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+    transition: width 0.28s ease, max-width 0.28s ease;
+  }
+
+  #course-modal.certificate-view {
+    width: min(100%, 900px);
   }
 
   #course-close {
@@ -448,6 +495,61 @@ const courses: Course[] = [
 
   #course-close:hover {
     background: var(--surface);
+  }
+
+  /* Back button — only visible in certificate view, replaces the
+     concept of "closing" with "returning" to the course description */
+  #course-back {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-secondary);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s;
+  }
+
+  #course-back:hover {
+    background: var(--surface);
+  }
+
+  #course-modal.certificate-view #course-back {
+    display: flex;
+  }
+
+  #course-modal.certificate-view #course-close {
+    display: none;
+  }
+
+  #course-view-description {
+    display: block;
+  }
+
+  #course-modal.certificate-view #course-view-description {
+    display: none;
+  }
+
+  #course-view-certificate {
+    display: none;
+    padding-top: 8px;
+  }
+
+  #course-modal.certificate-view #course-view-certificate {
+    display: block;
+  }
+
+  #cm-certificate-img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    border: 0.5px solid var(--border);
   }
 
   .course-modal-header {
@@ -546,6 +648,12 @@ const courses: Course[] = [
     display: flex;
     justify-content: flex-end;
     gap: 8px;
+  }
+
+  @media (max-width: 760px) {
+    .course-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 540px) {
