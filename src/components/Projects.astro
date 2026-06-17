@@ -1,8 +1,12 @@
 ---
 // Projects.astro — homepage projects section
+// Shows all projects with search + filter. Links to /projects for full detail page.
 import ProjectCard from "./ProjectCard.astro";
 import { projects } from "../data/projects";
 
+// Detect which projects have a dedicated detail file under src/data/projects/*.ts
+// (excluding this folder's own types.ts/index files), used to route the modal
+// to the full ProjectDetailModal instead of the small popup.
 const detailModules = import.meta.glob("../data/projects/*.ts");
 const detailSlugs = new Set(
   Object.keys(detailModules)
@@ -73,7 +77,7 @@ const detailSlugs = new Set(
 
 <style>
   .section-wrapper {
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
   }
 
