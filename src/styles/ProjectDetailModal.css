@@ -16,7 +16,7 @@
 
 #detail-modal-card {
   position: relative;
-  width: min(100%, 880px);
+  width: min(100%, 1040px);
   max-height: calc(100vh - 48px);
   display: flex;
   flex-direction: column;
@@ -82,7 +82,7 @@
 }
 
 #detail-modal-description {
-  max-width: 640px;
+  max-width: none;
 }
 
 #detail-modal-description p {
@@ -98,7 +98,6 @@
   color: var(--text-tertiary);
   margin-bottom: 6px;
   line-height: 1.6;
-  max-width: 640px;
 }
 
 #detail-modal-team-row strong,
@@ -119,7 +118,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: center;
 }
 
 .detail-row.detail-row-full {
@@ -148,6 +147,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .detail-block-image img {
@@ -182,7 +183,7 @@
 
 #detail-modal-highlights-wrap {
   margin-top: 26px;
-  max-width: 640px;
+  max-width: 760px;
 }
 
 .detail-modal-subheading {
