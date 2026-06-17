@@ -42,45 +42,59 @@ function renderInstitutions(institutions) {
   row.innerHTML = `<strong>Institutions:</strong> ${names}`
 }
 
-function renderImages(images) {
-  const wrap = document.getElementById('detail-modal-images')
-  if (!wrap) return
-
-  if (!images || images.length === 0) {
-    wrap.innerHTML = ''
-    return
+// Renders a single ContentBlock (text | image | note) as an HTML string.
+function renderBlock(block) {
+  if (block.type === 'image') {
+    return `
+      <div class="detail-block detail-block-image">
+        <figure>
+          <img src="${block.src}" alt="${block.alt || ''}" loading="lazy" />
+          <figcaption>${block.caption || ''}</figcaption>
+        </figure>
+      </div>
+    `
   }
 
-  wrap.innerHTML = images
-    .map(
-      img => `
-        <figure>
-          <img src="${img.src}" alt="${img.alt || ''}" loading="lazy" />
-          <figcaption>${img.caption || ''}</figcaption>
-        </figure>
-      `
-    )
-    .join('')
+  if (block.type === 'note') {
+    return `
+      <div class="detail-block detail-block-note">
+        <p class="detail-block-body">${block.body}</p>
+      </div>
+    `
+  }
+
+  // text block (default)
+  const heading = block.heading
+    ? `<p class="detail-block-heading">${block.heading}</p>`
+    : ''
+
+  return `
+    <div class="detail-block detail-block-text">
+      ${heading}
+      <p class="detail-block-body">${block.body}</p>
+    </div>
+  `
 }
 
-function renderSections(sections) {
-  const wrap = document.getElementById('detail-modal-sections')
-  if (!wrap) return
+// Renders the full rows array into the grid container. Each row with a
+// single column gets the "full width" modifier; rows with two columns
+// render side by side.
+function renderGrid(rows) {
+  const grid = document.getElementById('detail-modal-grid')
+  if (!grid) return
 
-  if (!sections || sections.length === 0) {
-    wrap.innerHTML = ''
+  if (!rows || rows.length === 0) {
+    grid.innerHTML = ''
     return
   }
 
-  wrap.innerHTML = sections
-    .map(
-      section => `
-        <div>
-          <p class="detail-modal-section-heading">${section.heading}</p>
-          <p class="detail-modal-section-body">${section.body}</p>
-        </div>
-      `
-    )
+  grid.innerHTML = rows
+    .map(row => {
+      const isFull = !row.columns || row.columns.length <= 1
+      const rowClass = isFull ? 'detail-row detail-row-full' : 'detail-row'
+      const blocksHtml = (row.columns || []).map(renderBlock).join('')
+      return `<div class="${rowClass}">${blocksHtml}</div>`
+    })
     .join('')
 }
 
@@ -134,8 +148,7 @@ export function openDetailModal(trigger) {
 
   renderTeam(detail.team)
   renderInstitutions(detail.institutions)
-  renderImages(detail.images)
-  renderSections(detail.sections)
+  renderGrid(detail.rows)
   renderHighlights(detail.highlights)
 
   tagsEl.innerHTML = allTags
