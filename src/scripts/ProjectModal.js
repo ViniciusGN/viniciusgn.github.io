@@ -11,12 +11,13 @@ function openModal(trigger) {
   const catLabel = document.getElementById('modal-category-label')
   const titleEl = document.getElementById('modal-title')
   const descEl = document.getElementById('modal-description')
+  const readMoreBtn = document.getElementById('modal-read-more')
   const tagsEl = document.getElementById('modal-tags')
   const demoBanner = document.getElementById('modal-demo-banner')
   const demoLink = document.getElementById('modal-btn-demo')
   const githubBtn = document.getElementById('modal-btn-github')
 
-  if (!overlay || !dotEl || !catLabel || !titleEl || !descEl || !tagsEl || !demoBanner || !demoLink || !githubBtn) return
+  if (!overlay || !dotEl || !catLabel || !titleEl || !descEl || !readMoreBtn || !tagsEl || !demoBanner || !demoLink || !githubBtn) return
 
   const title = trigger.dataset.modalTitle || ''
   const description = trigger.dataset.modalDescription || ''
@@ -55,6 +56,20 @@ function openModal(trigger) {
 
   overlay.classList.add('active')
   document.body.style.overflow = 'hidden'
+
+  // "Read more" — reset clamp state for the incoming project, then check
+  // (after the modal is actually visible, so layout is real) whether the
+  // description overflows its clamped height. Only then show the button;
+  // short descriptions stay exactly as they were before this feature.
+  descEl.classList.remove('expanded')
+  readMoreBtn.textContent = 'Read more'
+  readMoreBtn.style.display = 'none'
+
+  requestAnimationFrame(() => {
+    if (descEl.scrollHeight > descEl.clientHeight + 1) {
+      readMoreBtn.style.display = 'inline-flex'
+    }
+  })
 }
 
 function closeModal() {
@@ -63,6 +78,15 @@ function closeModal() {
 
   overlay.classList.remove('active')
   document.body.style.overflow = ''
+}
+
+function toggleReadMore() {
+  const descEl = document.getElementById('modal-description')
+  const readMoreBtn = document.getElementById('modal-read-more')
+  if (!descEl || !readMoreBtn) return
+
+  const expanded = descEl.classList.toggle('expanded')
+  readMoreBtn.textContent = expanded ? 'Show less' : 'Read more'
 }
 
 document.querySelectorAll('.proj-card').forEach(el => {
@@ -94,6 +118,7 @@ document.querySelectorAll('.proj-card').forEach(el => {
 
 document.getElementById('modal-close-x')?.addEventListener('click', closeModal)
 document.getElementById('modal-btn-close')?.addEventListener('click', closeModal)
+document.getElementById('modal-read-more')?.addEventListener('click', toggleReadMore)
 
 document.getElementById('modal-overlay')?.addEventListener('click', function (e) {
   if (e.target === this) closeModal()

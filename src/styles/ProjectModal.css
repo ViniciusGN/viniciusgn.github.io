@@ -74,11 +74,45 @@
   color: var(--text-primary);
 }
 
+/* Clamped by default — "Read more" only shows up if the text actually
+   overflows this height (checked in JS via scrollHeight vs clientHeight).
+   Short descriptions never trigger the button and look exactly as before. */
 #modal-description {
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.75;
-  margin-bottom: 18px;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#modal-description.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.modal-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  margin: 0 0 18px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.modal-read-more:hover {
+  color: var(--accent-text);
+  text-decoration: underline;
 }
 
 #modal-tags {
