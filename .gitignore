@@ -26,3 +26,4 @@ pnpm-debug.log*
 # Windows Zone.Identifier files
 *.Zone.Identifier
 **/*.Zone.Identifier
+proj_structure.txt
