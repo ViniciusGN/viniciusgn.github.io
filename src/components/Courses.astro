@@ -10,6 +10,10 @@ interface Course {
   tools: string[];
   link?: string;
   certificateImage?: string;
+  progress?: {
+    completed: number;
+    total: number;
+  };
 }
 
 const courses: Course[] = [
@@ -56,7 +60,7 @@ const courses: Course[] = [
     title: "Google Cybersecurity Professional Certificate",
     provider: "Google / Coursera",
     hours: "180h",
-    logo: "/images/profile/courses/google_cybersec.png", 
+    logo: "/images/profile/courses/google_cybersec.png",
     highlights: [
       "Foundational cybersecurity, threat detection and incident response.",
       "Security monitoring, SIEM analysis and network security fundamentals.",
@@ -77,19 +81,6 @@ const courses: Course[] = [
     ],
     tools: ["Python", "OpenAI APIs", "Hugging Face", "MLflow", "Vector Databases"],
     link: "https://www.datacamp.com",
-  },
-  {
-    title: "Associate AI Engineer for Developers",
-    provider: "DataCamp",
-    hours: "26h",
-    logo: "/images/profile/courses/datacamp-logo.png",
-    highlights: [
-      "Building AI-powered software applications with LLM integration.",
-      "Semantic search, chatbots, and recommendation systems.",
-      "Prompt engineering and AI application design using modern frameworks.",
-    ],
-    tools: ["Python", "OpenAI", "LangChain", "Hugging Face", "Pinecone"],
-    link: "https://www.datacamp.com/certification/ai-engineer-for-developers-associate",
   },
   {
     title: "AI Hacking 101",
@@ -121,7 +112,7 @@ const courses: Course[] = [
     title: "Beginner's Guide to IoT and Hardware Hacking",
     provider: "TCM Security",
     hours: "12h",
-    logo: "/images/profile/courses/tcm_iot.png", 
+    logo: "/images/profile/courses/tcm_iot.png",
     highlights: [
       "Practical introduction to embedded systems security and firmware analysis.",
       "Hardware attack methodologies and IoT attack surface identification.",
@@ -144,19 +135,6 @@ const courses: Course[] = [
     link: "https://www.cisa.gov/resources-tools/training/advanced-cybersecurity-industrial-control-systems-ics300",
   },
   {
-    title: "Self-Driving Cars Specialization",
-    provider: "Coursera / University of Toronto",
-    hours: "130h",
-    logo: "/images/profile/courses/drivingcars.png",
-    highlights: [
-      "Perception, localization, state estimation and sensor fusion.",
-      "Motion planning, vehicle control and autonomous navigation.",
-      "Practical projects using autonomous driving datasets.",
-    ],
-    tools: ["Python", "NumPy", "OpenCV", "Kalman Filters", "Vehicle Simulation"],
-    link: "https://www.coursera.org/specializations/self-driving-cars",
-  },
-  {
     title: "Discovering Open RAN: The Future of Mobile Networks",
     provider: "CPQD & Telecom Infra Project (TIP)",
     hours: "18h",
@@ -171,6 +149,29 @@ const courses: Course[] = [
     certificateImage: "/images/projects/certificates/certificate_openran.png",
   },
   {
+    title: "IEEE CIS AI Security Trainee Programme",
+    provider: "IEEE Computational Intelligence Society",
+    logo: "/images/profile/courses/ieeecis.jpg",
+    highlights: [
+      "Trainee programme at the IEEE CIS student chapter (UnB, 2023), with active participation in the AI Security chair. Covered classical ML foundations — Linear and Logistic Regression, Clustering, Perceptron, MLP, NLP and CNNs — alongside data preparation techniques including cleaning, class imbalance handling and feature engineering.",
+    ],
+    tools: [],
+  },
+    {
+    title: "Associate AI Engineer for Developers",
+    provider: "DataCamp",
+    hours: "26h",
+    logo: "/images/profile/courses/datacamp-logo.png",
+    highlights: [
+      "Building AI-powered software applications with LLM integration.",
+      "Semantic search, chatbots, and recommendation systems.",
+      "Prompt engineering and AI application design using modern frameworks.",
+    ],
+    tools: ["Python", "OpenAI", "LangChain", "Hugging Face", "Pinecone"],
+    link: "https://www.datacamp.com/certification/ai-engineer-for-developers-associate",
+    progress: { completed: 5, total: 10 },
+  },
+  {
     title: "Google Project Management Professional Certificate",
     provider: "Google / Coursera",
     hours: "140h",
@@ -182,15 +183,21 @@ const courses: Course[] = [
     ],
     tools: ["Jira", "Asana", "Google Workspace"],
     link: "https://www.coursera.org/professional-certificates/google-project-management",
+    progress: { completed: 1, total: 7 },
   },
   {
-    title: "IEEE CIS AI Security Trainee Programme",
-    provider: "IEEE Computational Intelligence Society",
-    logo: "/images/profile/courses/ieeecis.jpg",
+    title: "Self-Driving Cars Specialization",
+    provider: "Coursera / University of Toronto",
+    hours: "130h",
+    logo: "/images/profile/courses/drivingcars.png",
     highlights: [
-      "Trainee programme at the IEEE CIS student chapter (UnB, 2023), with active participation in the AI Security chair. Covered classical ML foundations — Linear and Logistic Regression, Clustering, Perceptron, MLP, NLP and CNNs — alongside data preparation techniques including cleaning, class imbalance handling and feature engineering.",
+      "Perception, localization, state estimation and sensor fusion.",
+      "Motion planning, vehicle control and autonomous navigation.",
+      "Practical projects using autonomous driving datasets.",
     ],
-    tools: [],
+    tools: ["Python", "NumPy", "OpenCV", "Kalman Filters", "Vehicle Simulation"],
+    link: "https://www.coursera.org/specializations/self-driving-cars",
+    progress: { completed: 1, total: 4 },
   },
 ];
 ---
@@ -209,6 +216,9 @@ const courses: Course[] = [
             ? <img src={course.logo} alt={course.provider} class="course-logo" />
             : <span class="course-logo-initials">{course.provider.slice(0, 2).toUpperCase()}</span>
           }
+          {course.progress && course.progress.completed < course.progress.total && (
+            <span class="course-badge">In progress</span>
+          )}
         </div>
         <div class="course-info">
           <span class="course-title">{course.title}</span>
@@ -236,11 +246,24 @@ const courses: Course[] = [
 
     <div id="course-view-description">
       <div class="course-modal-header">
-        <div id="cm-logo-wrap"></div>
+        <div class="cm-image-wrap">
+          <img id="cm-course-image" class="cm-course-image" src="" alt="" />
+          <span id="cm-course-initials" class="cm-course-initials"></span>
+        </div>
         <div>
           <div id="cm-provider"></div>
           <h2 id="course-modal-title"></h2>
           <div id="cm-hours"></div>
+        </div>
+      </div>
+
+      <div id="cm-progress-wrap" class="cm-progress-wrap">
+        <div class="cm-progress-label">
+          <span id="cm-progress-fraction"></span>
+          <span id="cm-progress-percent"></span>
+        </div>
+        <div class="cm-progress-track">
+          <div id="cm-progress-fill" class="cm-progress-fill"></div>
         </div>
       </div>
 
@@ -281,11 +304,20 @@ const courses: Course[] = [
     document.getElementById('cm-provider').textContent = c.provider;
     document.getElementById('cm-hours').textContent = c.hours || '';
 
-    var logoWrap = document.getElementById('cm-logo-wrap');
+    // Header image — static elements toggled via JS (not innerHTML),
+    // so component-scoped CSS below applies reliably to any source image size.
+    var imgEl = document.getElementById('cm-course-image');
+    var initEl = document.getElementById('cm-course-initials');
     if (c.logo) {
-      logoWrap.innerHTML = '<img src="' + c.logo + '" alt="' + c.provider + '" class="cm-logo-img" />';
+      imgEl.src = c.logo;
+      imgEl.alt = c.title;
+      imgEl.style.display = 'block';
+      initEl.style.display = 'none';
     } else {
-      logoWrap.innerHTML = '<span class="cm-logo-init">' + c.provider.slice(0,2).toUpperCase() + '</span>';
+      imgEl.removeAttribute('src');
+      imgEl.style.display = 'none';
+      initEl.style.display = 'flex';
+      initEl.textContent = c.provider.slice(0, 2).toUpperCase();
     }
 
     var hl = document.getElementById('cm-highlights');
@@ -328,6 +360,20 @@ const courses: Course[] = [
     } else {
       certBtn.style.display = 'none';
       certImg.src = '';
+    }
+
+    // Progress bar — only shown while completed < total.
+    // Once a course is finished (completed === total, or no progress field
+    // at all) the bar is hidden and the image stays clean.
+    var progressWrap = document.getElementById('cm-progress-wrap');
+    if (c.progress && c.progress.completed < c.progress.total) {
+      var pct = Math.round((c.progress.completed / c.progress.total) * 100);
+      document.getElementById('cm-progress-fraction').textContent = c.progress.completed + '/' + c.progress.total + ' modules';
+      document.getElementById('cm-progress-percent').textContent = pct + '%';
+      document.getElementById('cm-progress-fill').style.width = pct + '%';
+      progressWrap.style.display = 'block';
+    } else {
+      progressWrap.style.display = 'none';
     }
 
     showDescriptionView();
@@ -398,7 +444,14 @@ const courses: Course[] = [
   }
 
   .course-logo-wrap {
+    position: relative;
     flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+  }
+
+  .course-logo,
+  .course-logo-initials {
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -412,8 +465,6 @@ const courses: Course[] = [
   }
 
   .course-logo {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
   }
 
@@ -421,6 +472,25 @@ const courses: Course[] = [
     font-size: 12px;
     font-weight: 600;
     color: var(--accent-text);
+  }
+
+  /* "In progress" badge — same pattern as Certifications' cert-badge,
+     anchored to the bottom edge of the circular logo. */
+  .course-badge {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--surface);
+    color: var(--text-tertiary);
+    border: 0.5px solid var(--border);
+    border-radius: 99px;
+    padding: 1px 6px;
+    white-space: nowrap;
   }
 
   .course-info {
@@ -461,7 +531,7 @@ const courses: Course[] = [
 
   #course-modal {
     position: relative;
-    width: min(100%, 520px);
+    width: min(100%, 560px);
     max-height: calc(100vh - 48px);
     overflow-y: auto;
     padding: 28px;
@@ -554,37 +624,42 @@ const courses: Course[] = [
 
   .course-modal-header {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    align-items: flex-start;
+    gap: 18px;
     margin-bottom: 18px;
     padding-right: 32px;
   }
 
-  .cm-logo-img {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1.5px solid var(--accent-border);
-    box-shadow: 0 0 0 3px var(--modal-bg), 0 0 0 5px var(--accent-border);
+  /* Standardized course image container — fixed size, slightly rounded
+     square, object-fit: cover. Same box regardless of the source image's
+     native dimensions (banner illustration, small badge, SVG, whatever). */
+  .cm-image-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 14px;
+    overflow: hidden;
     flex-shrink: 0;
-    background: #ffffff;
+    border: 0.5px solid var(--border);
+    background: var(--surface);
   }
 
-  .cm-logo-init {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 1.5px solid var(--accent-border);
-    box-shadow: 0 0 0 3px var(--modal-bg), 0 0 0 5px var(--accent-border);
-    background: var(--accent-bg);
-    color: var(--accent-text);
-    font-size: 14px;
-    font-weight: 600;
-    display: flex;
+  .cm-course-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cm-course-initials {
+    width: 100%;
+    height: 100%;
+    display: none;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent-text);
+    background: var(--accent-bg);
   }
 
   #cm-provider {
@@ -604,6 +679,37 @@ const courses: Course[] = [
   #cm-hours {
     font-size: 12px;
     color: var(--text-tertiary);
+  }
+
+  /* Progress bar — only shown for courses with completed < total.
+     Sits between the header and the highlights, above the description text. */
+  .cm-progress-wrap {
+    display: none;
+    margin: 0 0 18px;
+  }
+
+  .cm-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-bottom: 6px;
+  }
+
+  .cm-progress-track {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+  }
+
+  .cm-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.25s ease;
   }
 
   #cm-highlights {
@@ -659,6 +765,16 @@ const courses: Course[] = [
   @media (max-width: 540px) {
     .course-grid {
       grid-template-columns: 1fr;
+    }
+
+    .cm-image-wrap {
+      width: 88px;
+      height: 88px;
+      border-radius: 12px;
+    }
+
+    .cm-course-initials {
+      font-size: 20px;
     }
 
     .course-modal-actions {
