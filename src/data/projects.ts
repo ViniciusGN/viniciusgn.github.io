@@ -95,7 +95,7 @@ export const projects: Project[] = [
     title: "Corporate Network Simulation — GNS3",
     slug: "gns3-network",
     year: "2023",
-    color: "#D97706",
+    color: "#D97706", // Network Security
     description:
       "Full corporate network simulation in GNS3 integrating Snort, Suricata, Wazuh, Zabbix, Kali Linux, and an OSPF backbone with VLAN segmentation.",
     fullDescription:
@@ -105,5 +105,18 @@ export const projects: Project[] = [
     hasDemo: false,
     demoUrl: "",
     githubUrl: "",
+  },
+  {
+    title: "Operating Systems & Parallel Computing — University Labs & Coursework",
+    slug: "os-university-labs",
+    year: "2024 – 2025",
+    color: "#78716C", // fixed for C / C++ / Parallel Architectures projects
+    description: "Operating Systems and Parallel Computing coursework across two degrees — UnB and ENSICAEN — covering process management, concurrency, memory, CPU scheduling, and shared-memory parallel programming with OpenMP.",
+    fullDescription: "Operating Systems coursework taken twice across two degrees, plus a Parallel Computing course, forming a broader systems-programming track between UnB and ENSICAEN.", // fallback only — real content lives in the detail file
+    images: [],
+    tags: ["C", "C++", "POSIX", "OpenMP", "Parallel Computing", "Process Scheduling", "Memory Management", "IPC", "Concurrency", "Linux", "Others"],
+    hasDemo: false,
+    demoUrl: "",
+    githubUrl: "https://github.com/ViniciusGN/Operating-System",
   },
 ];
