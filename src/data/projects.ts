@@ -35,7 +35,7 @@ export const projects: Project[] = [
     title: "Generative AI & Computer Vision — Bayeux Museum",
     slug: "greyc-bayeux",
     year: "2026",
-    color: "#7C3AED",
+    color: "#2563EB", // "#7C3AED"
     description:
       "Industrial project with GREYC laboratory and the Bayeux Museum. Interactive solutions using generative AI and computer vision to promote the cultural heritage of the Bayeux Tapestry.",
     fullDescription:
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     title: "Social Engineering Attack Demonstrator",
     slug: "social-engineering-demo",
     year: "2025",
-    color: "#DC2626",
+    color: "#DC2626", // "#DC2626" Cybersecurity  
     description:
       "Educational demonstrator of a social engineering attack using a malicious PDF, a Discord-integrated chatbot, LLM APIs, and Metasploit — aimed at security awareness.",
     fullDescription:
@@ -105,6 +105,19 @@ export const projects: Project[] = [
     hasDemo: false,
     demoUrl: "",
     githubUrl: "",
+  },
+  {
+    title: "Cryptography — University Labs & Coursework ",
+    slug: "crypto-university-labs",
+    year: "2024 – 2025",
+    color: "#BE185D", // fixed for Cryptography projects
+    description: "Cryptography coursework across two degrees — UnB and ENSICAEN — spanning RSA/AES implemented from scratch, elliptic curve cryptography and ECDSA, certificate parsing, side-channel attacks, and classical cryptographic theory.",
+    fullDescription: "Cryptography coursework taken across two degrees, plus a dedicated Advanced Cryptography course, forming a broader cryptography track between UnB and ENSICAEN.", // fallback only — real content lives in the detail file
+    images: [],
+    tags: ["RSA", "AES", "ECC", "ECDSA", "Diffie-Hellman", "Side-Channel Attacks", "Python", "Cybersecurity"],
+    hasDemo: false,
+    demoUrl: "",
+    githubUrl: "https://github.com/ViniciusGN/advanced-cryptography",
   },
   {
     title: "Operating Systems & Parallel Computing — University Labs & Coursework",
