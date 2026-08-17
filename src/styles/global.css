@@ -202,6 +202,32 @@ section {
   border: 0.5px solid var(--border);
 }
 
+.hero-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.hero-name-row .hero-name {
+  margin: 0;
+}
+
+.hero-cv-btn {
+  flex-shrink: 0;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* era center */
+  gap: 8px;
+}
+
 .hero-name {
   font-size: 24px;
   font-weight: 500;
